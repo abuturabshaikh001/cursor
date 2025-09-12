@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo App</title>
+    <meta name="description" content="A simple, accessible Todo application with local persistence.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Todos</h1>
+      <button id="theme-toggle" class="icon-button" aria-label="Toggle theme" title="Toggle theme" type="button">🌓</button>
+    </header>
+
+    <main id="app" class="app" aria-live="polite">
+      <section class="todo-input" aria-labelledby="add-todo-heading">
+        <h2 id="add-todo-heading" class="visually-hidden">Add a new todo</h2>
+        <form id="todo-form" autocomplete="off">
+          <label for="todo-text" class="visually-hidden">Todo</label>
+          <input id="todo-text" name="todo" type="text" placeholder="What needs to be done?" required aria-required="true" maxlength="200">
+          <button type="submit">Add</button>
+        </form>
+      </section>
+
+      <section class="todo-controls" aria-label="Todo controls">
+        <div class="filters" role="group" aria-label="Filters">
+          <button data-filter="all" class="filter is-active" type="button">All</button>
+          <button data-filter="active" class="filter" type="button">Active</button>
+          <button data-filter="completed" class="filter" type="button">Completed</button>
+        </div>
+        <div class="bulk-actions">
+          <button id="toggle-all" type="button">Toggle All</button>
+          <button id="clear-completed" type="button">Clear Completed</button>
+        </div>
+      </section>
+
+      <section aria-labelledby="list-heading">
+        <h2 id="list-heading" class="visually-hidden">Todo list</h2>
+        <ul id="todo-list" class="todo-list" role="list"></ul>
+      </section>
+
+      <section class="todo-stats" aria-live="polite">
+        <span id="items-left">0 items left</span>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>
+        Built with vanilla JS. Data stored in your browser only.
+      </p>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+  </html>

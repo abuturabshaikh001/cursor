@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern, polished todo app with beautiful UI and smooth animations">
+    <meta name="theme-color" content="#6366f1">
+    <title>TodoFlow - Modern Task Manager</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'%3E%3Cpath d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h1 class="app-title">TodoFlow</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                    <button class="stats-toggle" id="statsToggle" aria-label="Show statistics">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Add Todo Section -->
+            <section class="add-todo-section">
+                <div class="add-todo-container">
+                    <form class="add-todo-form" id="addTodoForm">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="todoInput" 
+                                placeholder="What needs to be done?" 
+                                autocomplete="off"
+                                aria-label="Add new todo"
+                                maxlength="200"
+                            >
+                            <button type="submit" class="add-button" aria-label="Add todo">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="priority-selector">
+                            <label class="priority-label">Priority:</label>
+                            <select id="prioritySelect" aria-label="Select priority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Filter and Stats Section -->
+            <section class="filter-section">
+                <div class="filter-container">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">All</button>
+                        <button class="filter-tab" data-filter="active">Active</button>
+                        <button class="filter-tab" data-filter="completed">Completed</button>
+                    </div>
+                    <div class="todo-stats" id="todoStats">
+                        <span class="stats-text">0 tasks remaining</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Todo List -->
+            <section class="todo-list-section">
+                <div class="todo-list-container">
+                    <ul class="todo-list" id="todoList" role="list">
+                        <!-- Todos will be dynamically added here -->
+                    </ul>
+                    <div class="empty-state" id="emptyState">
+                        <div class="empty-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3>All caught up!</h3>
+                        <p>You have no tasks. Add one above to get started.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bulk Actions -->
+            <section class="bulk-actions" id="bulkActions" style="display: none;">
+                <div class="bulk-actions-container">
+                    <span class="bulk-count" id="bulkCount">0 selected</span>
+                    <div class="bulk-buttons">
+                        <button class="bulk-button" id="bulkComplete" aria-label="Mark selected as complete">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                            Complete
+                        </button>
+                        <button class="bulk-button" id="bulkDelete" aria-label="Delete selected">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/>
+                            </svg>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Statistics Modal -->
+        <div class="modal-overlay" id="statsModal" style="display: none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Task Statistics</h2>
+                    <button class="modal-close" id="closeStatsModal" aria-label="Close statistics">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon total">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="totalTasks">0</span>
+                                <span class="stat-label">Total Tasks</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon completed">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="completedTasks">0</span>
+                                <span class="stat-label">Completed</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon active">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="activeTasks">0</span>
+                                <span class="stat-label">Active</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon productivity">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="productivityScore">0%</span>
+                                <span class="stat-label">Productivity</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-section">
+                        <h3>Completion Progress</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">0% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

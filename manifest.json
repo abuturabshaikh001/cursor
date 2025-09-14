@@ -1,0 +1,86 @@
+{
+  "name": "TodoFlow - Modern Task Manager",
+  "short_name": "TodoFlow",
+  "description": "A modern, polished todo app with beautiful UI and smooth animations. Manage your tasks efficiently with priority levels, filtering, and comprehensive statistics.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["productivity", "utilities", "lifestyle"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192' fill='%236366f1'%3E%3Crect width='192' height='192' rx='32' fill='%236366f1'/%3E%3Cpath d='M96 48c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48zm0 80c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z' fill='white'/%3E%3Cpath d='M84 96l8 8 16-16' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%236366f1'%3E%3Crect width='512' height='512' rx='80' fill='%236366f1'/%3E%3Cpath d='M256 128c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128-57.3-128-128-128zm0 208c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z' fill='white'/%3E%3Cpath d='M224 256l16 16 32-32' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600' fill='%23f8fafc'%3E%3Crect width='800' height='600' fill='%23f8fafc'/%3E%3Crect x='50' y='50' width='700' height='500' rx='20' fill='white' stroke='%23e2e8f0' stroke-width='2'/%3E%3Ctext x='400' y='120' text-anchor='middle' font-family='Inter, sans-serif' font-size='32' font-weight='700' fill='%236366f1'%3ETodoFlow%3C/text%3E%3Ctext x='400' y='200' text-anchor='middle' font-family='Inter, sans-serif' font-size='16' fill='%2364748b'%3EModern Task Manager%3C/text%3E%3Crect x='100' y='250' width='600' height='40' rx='8' fill='%23f1f5f9'/%3E%3Ctext x='120' y='275' font-family='Inter, sans-serif' font-size='14' fill='%2394a3b8'%3EWhat needs to be done?%3C/text%3E%3Crect x='100' y='320' width='120' height='30' rx='6' fill='%236366f1'/%3E%3Ctext x='160' y='340' text-anchor='middle' font-family='Inter, sans-serif' font-size='12' fill='white'%3EAll Tasks%3C/text%3E%3Crect x='240' y='320' width='120' height='30' rx='6' fill='%23f1f5f9'/%3E%3Ctext x='300' y='340' text-anchor='middle' font-family='Inter, sans-serif' font-size='12' fill='%2364748b'%3EActive%3C/text%3E%3Crect x='380' y='320' width='120' height='30' rx='6' fill='%23f1f5f9'/%3E%3Ctext x='440' y='340' text-anchor='middle' font-family='Inter, sans-serif' font-size='12' fill='%2364748b'%3ECompleted%3C/text%3E%3Crect x='100' y='380' width='600' height='50' rx='8' fill='white' stroke='%23e2e8f0' stroke-width='1'/%3E%3Ccircle cx='130' cy='405' r='12' fill='%236366f1'/%3E%3Cpath d='M125 405l3 3 6-6' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ctext x='160' y='410' font-family='Inter, sans-serif' font-size='14' fill='%231e293b'%3EComplete project documentation%3C/text%3E%3Crect x='100' y='450' width='600' height='50' rx='8' fill='white' stroke='%23e2e8f0' stroke-width='1'/%3E%3Ccircle cx='130' cy='475' r='12' fill='%23e2e8f0'/%3E%3Ctext x='160' y='480' font-family='Inter, sans-serif' font-size='14' fill='%231e293b'%3EReview team feedback%3C/text%3E%3C/svg%3E",
+      "sizes": "800x600",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "TodoFlow main interface showing task management features"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Add New Task",
+      "short_name": "Add Task",
+      "description": "Quickly add a new task",
+      "url": "/?action=add",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "View Statistics",
+      "short_name": "Stats",
+      "description": "View your productivity statistics",
+      "url": "/?action=stats",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2'%3E%3Cpath d='M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3'/%3E%3C/svg%3E",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "handle_links": "preferred",
+  "protocol_handlers": [
+    {
+      "protocol": "web+todoflow",
+      "url": "/?action=add&text=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/?action=import",
+      "accept": {
+        "application/json": [".json"]
+      }
+    }
+  ]
+}

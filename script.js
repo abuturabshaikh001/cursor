@@ -16,9 +16,26 @@ class TodoFlow {
         this.applyTheme();
         this.renderTodos();
         this.updateStats();
-        this.setupKeyboardShortcuts();
-        this.setupDragAndDrop();
-        this.setupServiceWorker();
+
+        // Defer non-critical work to idle time or after full load
+        this.deferNonCriticalInitialization();
+    }
+
+    deferNonCriticalInitialization() {
+        const requestIdle = window.requestIdleCallback || function(callback, opts) {
+            const start = Date.now();
+            return setTimeout(() => callback({ didTimeout: false, timeRemaining: () => Math.max(0, 50 - (Date.now() - start)) }), (opts && opts.timeout) || 1);
+        };
+
+        requestIdle(() => {
+            this.setupKeyboardShortcuts();
+            this.setupDragAndDrop();
+        }, { timeout: 2000 });
+
+        // SW registration after full page load so it doesn't compete with TTI
+        window.addEventListener('load', () => {
+            this.setupServiceWorker();
+        });
     }
 
     // Theme Management

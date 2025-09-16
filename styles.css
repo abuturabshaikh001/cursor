@@ -200,6 +200,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
 }
 
 /* Add Todo Section */
@@ -365,6 +367,8 @@ body {
     border: 1px solid var(--border-color);
     min-height: 300px;
     position: relative;
+    content-visibility: auto;
+    contain-intrinsic-size: 600px 1px;
 }
 
 .todo-list {
@@ -664,6 +668,8 @@ body {
     max-height: 80vh;
     overflow: hidden;
     animation: slideUp 0.3s ease-out;
+    content-visibility: auto;
+    contain-intrinsic-size: 400px 600px;
 }
 
 .modal-header {
